@@ -8,11 +8,10 @@
 	
 
 	if(dao.checkUserExisted(username)){
-		response.getWriter().println("<span style=\"color:red\">用户已存在</span>");
-		request.setAttribute("unameavail", false);
+		response.getWriter().println("{\"text\":\"用户已存在\",\"unameavail\":\"false\"}");
+		
 	}else{
-		response.getWriter().println("<span style=\"color:green\">可以使用</span>");
-		request.setAttribute("unameavail", true);
+		response.getWriter().println("{\"text\":\"可以使用\",\"unameavail\":\"true\"}");
 	}
 
 %>

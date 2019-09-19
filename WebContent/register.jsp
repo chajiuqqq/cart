@@ -10,6 +10,7 @@
 <script>
 
 	var xmlhttp;
+	var unameavail="false";
 	function loadXML(url,func){
 		xmlhttp=new XMLHttpRequest();
 		xmlhttp.onreadystatechange=func;
@@ -36,8 +37,13 @@
 		var uname=document.getElementById("username").value;
 		var url="registercheck.jsp?username="+uname;
 		loadXML(url,function(){
-			if(xmlhttp.readyState==4&&xmlhttp.status==200)
-				document.getElementById("unamecheck").innerHTML=xmlhttp.responseText;
+			if(xmlhttp.readyState==4&&xmlhttp.status==200){
+				var myjson=JSON.parse(xmlhttp.responseText);
+				document.getElementById("unamecheck").innerHTML=myjson.text;
+				unameavail=myjson.unameavail;
+			}
+				
+				
 			console.log("xmlhttp.responseText:"+xmlhttp.responseText);
 		})
 		
@@ -45,8 +51,9 @@
 	
 	
 	function submitinfo(){
-		//这里的el表达式一开始就替换掉了，不会实时更新 所以一直会进入
-		if("true".localeCompare("${unameavail}")){
+		//如果使用el表达式，一开始就替换掉了，不会实时更新，所以即使在js里可以用el，也只能是常量吧。
+		console.log("unameavail:"+unameavail);
+		if("true"==unameavail){
 			var name=document.getElementById("name").value;
 			var uname=document.getElementById("username").value;
 			var pw=document.getElementById("fpw").value;
