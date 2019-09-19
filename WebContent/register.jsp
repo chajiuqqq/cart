@@ -62,7 +62,8 @@
 			loadXML(url,function(){
 				
 			});
-			alert("注册成功！");
+			alert("注册成功！请重新登录！");
+			history.back();
 		}else{
 			alert("注册失败！请重新填写！");
 		}

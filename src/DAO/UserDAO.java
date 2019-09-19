@@ -92,7 +92,30 @@ public class UserDAO {
 		
 	}
 	
+
+	public String getName(String username) {
+		String sql="select name from user where username=? ";
+		try(Connection c=new DBUtil().getConnection();
+				PreparedStatement p=c.prepareStatement(sql);){
+			
+			p.setString(1, username);
+		
+			ResultSet results=p.executeQuery();
+			String name=null;
+			while(results.next()){
+				name=results.getString(1);
+				
+			}
+			
+			return name;
+			
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		return null;
+	}
+	
 	public static void main(String[] args) {
-		System.out.println(new UserDAO().checkUserExisted("chajiuqqq"));
+		System.out.println(new UserDAO().getName("myzyy"));
 	}
 }

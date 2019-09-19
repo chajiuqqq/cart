@@ -9,6 +9,7 @@
 <body>
 <script>
 	var xmlhttp;
+	
 	function check(){
 		xmlhttp=new XMLHttpRequest();
 		var uname=document.getElementById("username").value;
@@ -20,8 +21,15 @@
 		xmlhttp.send(null);
 	}
 	function show(){
-		if(xmlhttp.readyState==4&&xmlhttp.status==200)
-			alert(xmlhttp.responseText);
+		if(xmlhttp.readyState==4&&xmlhttp.status==200){
+			var res=JSON.parse(xmlhttp.responseText);
+			if(res!=null&&res.status=="true"){
+				alert("登入成功！");
+				window.open("listProduct")
+			}else{
+				alert("登入失败！");
+			}
+		}
 		console.log("xmlhttp.responseText:"+xmlhttp.responseText);
 	}
 
@@ -31,7 +39,7 @@
 	用户名:<input type="text" id="username"><br/>
 	密码:<input type="password" id="password"><br/>
 	<button onclick="check()">登入</button>
-	<a href="register.jsp" target="_blank"><button>注册</button></a>
+	<a href="register.jsp" target="_self"><button>注册</button></a>
 	
 
 </div>

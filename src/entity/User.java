@@ -14,6 +14,11 @@ public class User {
 		password=apassword;
 	}
 	
+	public User(String aname,String ausername,String apassword) {
+		// TODO Auto-generated constructor stub
+		this(0, aname, ausername, apassword);
+	}
+	
 	public int getId() {
 		return id;
 	}

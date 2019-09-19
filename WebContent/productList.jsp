@@ -7,10 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
-	#dtable{
-		text-align:center;
-		width:1200px;
-	}
 	table{
 		border-collapse:collapse;
 	}
@@ -18,11 +14,27 @@
 		text-align:center;
 		border:black solid 1px;
 	}
-
+	.userstatus{
+		float:right;
+		color:skyblue;
+	}
 </style>
 </head>
 <body>
-<div id="dtable">
+
+<c:if test="${!(empty parentuser)}">
+	<div class="userstatus">
+		<p>当前用户:${parentuser.name}</p>
+	</div>
+</c:if>
+
+<c:if test="${empty parentuser}">
+	<div class="userstatus">
+		<p>未登录</p>
+	</div>
+</c:if>
+
+<div id="dtable" align="center">
 	<table>
 	
 		<tr>
