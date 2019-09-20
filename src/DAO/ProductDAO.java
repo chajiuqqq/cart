@@ -31,7 +31,30 @@ public class ProductDAO {
 		return null;
 	}
 	
+	
+	public Product getProduct(int id) {
+		String sql="select * from product where id=?";
+		try(Connection c=new DBUtil().getConnection();
+				PreparedStatement p=c.prepareStatement(sql);){
+			p.setInt(1, id);
+		
+			ResultSet results=p.executeQuery();
+			Product item=null;
+			while(results.next()){
+				int aid=results.getInt("id");
+				String aname=results.getString("name");
+				double aprice=results.getDouble("price");
+				item=new Product(aid, aname, aprice);
+			}
+			return item;
+			
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		return null;
+	}
+	
 	public static void main(String[] args) {
-		System.out.println(new ProductDAO().ListProduct());
+		System.out.println(new ProductDAO().getProduct(1));
 	}
 }

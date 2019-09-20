@@ -9,6 +9,7 @@
 <style>
 	table{
 		border-collapse:collapse;
+		width:50%;
 	}
 	td{
 		text-align:center;
@@ -22,6 +23,22 @@
 </head>
 <body>
 
+<script>
+	var xmlhttp;
+	function loadXML(url,func){
+		xmlhttp=new XMLHttpRequest();
+		xmlhttp.onreadystatuschange=func;
+		xmlhttp.open("get",url,true);
+		xmlhttp.send(null);
+	}
+	
+	function submit(){
+			
+	}
+
+
+</script>
+
 <c:if test="${!(empty parentuser)}">
 	<div class="userstatus">
 		<p>当前用户:${parentuser.name}</p>
@@ -33,6 +50,9 @@
 		<p>未登录</p>
 	</div>
 </c:if>
+
+
+<p style="font-size:36px;text-align:center;">商品列表</p>
 
 <div id="dtable" align="center">
 	<table>
@@ -46,34 +66,36 @@
 		</tr>
 		
 		<c:forEach items="${products}" var="product" varStatus="st">
-		<tr>
-			<td>${product.id}</td>
-			<td>${product.name}</td>
-			<td>${product.price}</td>
-			<td>
-				<form action="">
-					数量
-					<select>
-						<option>0</option>
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-						<option>6</option>
-						<option>7</option>
-						<option>8</option>
-						<option>9</option>
-						<option>10</option>
-					</select>
-					<input type="submit" value="加入购物车">
-				</form>
-			</td>						
-		</tr>
-		
-		
+			<tr>
+				<td>${product.id}</td>
+				<td>${product.name}</td>
+				<td>${product.price}</td>
+				<td>
+					<form action="addintocart">
+						数量
+						<select name="selectnumber">
+							<option>0</option>
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
+							<option>6</option>
+							<option>7</option>
+							<option>8</option>
+							<option>9</option>
+							<option>10</option>
+						</select>
+						<input type="hidden" name="pid" value="${product.id}">
+						<button type="submit">加入购物车</button>
+					</form>
+				</td>
+			</tr>
 		</c:forEach>
-	
+		
+		<tr>
+			<td colspan="4"><a href="listcart.jsp" target="_self"><input type="button" value="显示购物车"></a></td>
+		</tr>	
 	</table>
 
 </div>

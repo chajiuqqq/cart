@@ -10,5 +10,15 @@
 		<servlet-name>ProductListServlet</servlet-name>
 		<url-pattern>/listProduct</url-pattern>
 	</servlet-mapping>
-
+	
+	
+	<servlet>
+		<servlet-name>AddIntoCartServlet</servlet-name>
+		<servlet-class>AddIntoCartServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddIntoCartServlet</servlet-name>
+		<url-pattern>/addintocart</url-pattern>
+	</servlet-mapping>
+	
 </web-app>
