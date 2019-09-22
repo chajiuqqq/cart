@@ -114,8 +114,52 @@ public class UserDAO {
 		}
 		return null;
 	}
+	public int getID(String username) {
+		String sql="select id from user where username=? ";
+		try(Connection c=new DBUtil().getConnection();
+				PreparedStatement p=c.prepareStatement(sql);){
+			
+			p.setString(1, username);
+		
+			ResultSet results=p.executeQuery();
+			int id=0;
+			while(results.next()){
+				id=results.getInt(1);
+				
+			}
+			
+			return id;
+			
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		return 0;
+	}
+	public User getUser(int id) {
+		String sql="select * from user where id=? ";
+		try(Connection c=new DBUtil().getConnection();
+				PreparedStatement p=c.prepareStatement(sql);){
+			
+			p.setInt(1, id);
+		
+			ResultSet results=p.executeQuery();
+			
+			while(results.next()){
+				String name=results.getString(2);
+				String uname=results.getString(3);
+				String pw=results.getString(4);
+				User user=new User(id,name, uname, pw);
+				return user;
+			}
+			
+		
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		return null;
+	}
 	
 	public static void main(String[] args) {
-		System.out.println(new UserDAO().getName("myzyy"));
+		System.out.println(new UserDAO().getUser(1));
 	}
 }

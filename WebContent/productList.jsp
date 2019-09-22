@@ -23,21 +23,7 @@
 </head>
 <body>
 
-<script>
-	var xmlhttp;
-	function loadXML(url,func){
-		xmlhttp=new XMLHttpRequest();
-		xmlhttp.onreadystatuschange=func;
-		xmlhttp.open("get",url,true);
-		xmlhttp.send(null);
-	}
-	
-	function submit(){
-			
-	}
 
-
-</script>
 
 <c:if test="${!(empty parentuser)}">
 	<div class="userstatus">
@@ -73,9 +59,9 @@
 				<td>
 					<form action="addintocart">
 						数量
-						<select name="selectnumber">
+						<select class="sel" name="selectnumber">
 							<option>0</option>
-							<option>1</option>
+							<option selected="selected">1</option>
 							<option>2</option>
 							<option>3</option>
 							<option>4</option>
@@ -87,7 +73,7 @@
 							<option>10</option>
 						</select>
 						<input type="hidden" name="pid" value="${product.id}">
-						<button type="submit">加入购物车</button>
+						<button class="btn">加入购物车</button>
 					</form>
 				</td>
 			</tr>
@@ -99,6 +85,37 @@
 	</table>
 
 </div>
+
+<script>
+	var xmlhttp;
+	function loadXML(url,func){
+		xmlhttp=new XMLHttpRequest();
+		xmlhttp.onreadystatuschange=func;
+		xmlhttp.open("get",url,true);
+		xmlhttp.send(null);
+	}
+	
+	/*
+	var btns=document.getElementsByClassName("btn");
+	
+	console.log("btns.length:"+btns.length);
+	
+	for(var i=0;i<btns.length;i++){
+		btns[i].onclick=function(){
+				var apid=this.attributes["pid"].nodeValue;
+				var sel=document.getElementsByClassName("sel")[pid=apid].value;
+				console.log("pid:"+pid);
+				var url="addintocart?pid="+pid+"&selectnumber="+sel;
+				loadXML(url,function(){
+					if(xmlhttp.readyState==4&&xmlhttp.status==200){
+						alert("加入成功！");
+					}
+				});
+			};
+	}*/
+
+
+</script>
 
 
 </body>

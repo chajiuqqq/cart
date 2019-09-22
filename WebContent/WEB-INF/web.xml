@@ -21,4 +21,12 @@
 		<url-pattern>/addintocart</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>PushOrderServlet</servlet-name>
+		<servlet-class>PushOrderServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PushOrderServlet</servlet-name>
+		<url-pattern>/pushorder</url-pattern>
+	</servlet-mapping>
 </web-app>

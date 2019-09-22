@@ -12,6 +12,7 @@
 		out.print("{\"status\":\"true\"}");
 		String name=dao.getName(username);
 		User user=new User(name,username,password);
+		user.setId(dao.getID(username));
 		session.setAttribute("parentuser",user);
 		
 	}else{

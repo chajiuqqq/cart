@@ -42,7 +42,7 @@
 		<td colspan="4" style="color:blue;text-align:right">总计:${totalMoney}</td>
 	</tr>
 	<tr>
-		<td colspan="4"><input type="button" value="提交订单"></td>
+		<td colspan="4"><a href="pushorder"><input type="button" value="提交订单"></a></td>
 	</tr>
 
 </table>
