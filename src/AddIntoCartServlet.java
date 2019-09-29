@@ -14,7 +14,6 @@ public class AddIntoCartServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		List<OrderItem> list=null;
-//		Double totalMoney=null;
 		double totalMoney=0.0;
 		
 		if(request.getSession().getAttribute("orderitemlist")==null){
@@ -32,11 +31,23 @@ public class AddIntoCartServlet extends HttpServlet {
 		int num=Integer.parseInt(request.getParameter("selectnumber"));
 		
 		OrderItem item=new OrderItem(id, num);
-		list.add(item);
+		
+		//合并相同商品
+		for(OrderItem x:list){
+			if(x.getProduct().getId()==id){
+				x.setNumber(x.getNumber()+num);
+				item.setNumber(0);
+				break;
+			}
+		}
+		if(item.getNumber()!=0)
+			list.add(item);
+		
+		
 		totalMoney+=item.getTotalPrice();
 		request.getSession().setAttribute("totalMoney", totalMoney);//totalMoney对应的是基本数据类型，所以要重新设置attr
 		
-		request.getRequestDispatcher("listProduct").forward(request, response);
+	//	request.getRequestDispatcher("listProduct").forward(request, response);
 		
 	}
 }

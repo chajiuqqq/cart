@@ -19,21 +19,25 @@
 		float:right;
 		color:skyblue;
 	}
+	tr:nth-child(2n-1){
+		background-color:#4169E1;
+	}
 </style>
 </head>
+<script src="jquery-1.10.2.min.js"></script>
 <body>
 
 
 
 <c:if test="${!(empty parentuser)}">
 	<div class="userstatus">
-		<p>当前用户:${parentuser.name}</p>
+		<p>已登录 当前用户:${parentuser.name}</p>
 	</div>
 </c:if>
 
 <c:if test="${empty parentuser}">
 	<div class="userstatus">
-		<p>未登录</p>
+		<a href="login.jsp" target="_blank">登陆</a>
 	</div>
 </c:if>
 
@@ -57,11 +61,11 @@
 				<td>${product.name}</td>
 				<td>${product.price}</td>
 				<td>
-					<form action="addintocart">
+					
 						数量
-						<select class="sel" name="selectnumber">
-							<option>0</option>
-							<option selected="selected">1</option>
+						<select class="sel" name="selectnumber" pid="${ product.id}">
+							<option selected="selected">0</option>
+							<option>1</option>
 							<option>2</option>
 							<option>3</option>
 							<option>4</option>
@@ -72,9 +76,8 @@
 							<option>9</option>
 							<option>10</option>
 						</select>
-						<input type="hidden" name="pid" value="${product.id}">
-						<button class="btn">加入购物车</button>
-					</form>
+						<button class="btn" pid="${ product.id}">加入购物车</button>
+					
 				</td>
 			</tr>
 		</c:forEach>
@@ -87,6 +90,7 @@
 </div>
 
 <script>
+/*
 	var xmlhttp;
 	function loadXML(url,func){
 		xmlhttp=new XMLHttpRequest();
@@ -95,7 +99,7 @@
 		xmlhttp.send(null);
 	}
 	
-	/*
+
 	var btns=document.getElementsByClassName("btn");
 	
 	console.log("btns.length:"+btns.length);
@@ -113,7 +117,17 @@
 				});
 			};
 	}*/
-
+	$(function(){
+		$(".btn").click(function(){
+			var pid=$(this).attr("pid");
+			console.log("pid:"+pid);
+			var num=$(".sel[pid="+pid+"]").val();
+			console.log("num:"+num);
+			$.get(
+				"addintocart?pid="+pid+"&selectnumber="+num
+			);
+		});
+	})
 
 </script>
 

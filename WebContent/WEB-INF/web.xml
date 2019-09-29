@@ -29,4 +29,15 @@
 		<servlet-name>PushOrderServlet</servlet-name>
 		<url-pattern>/pushorder</url-pattern>
 	</servlet-mapping>
+	
+	
+	
+	<servlet>
+		<servlet-name>DelOrderItemServlet</servlet-name>
+		<servlet-class>DelOrderItemServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DelOrderItemServlet</servlet-name>
+		<url-pattern>/delOrderItem</url-pattern>
+	</servlet-mapping>
 </web-app>

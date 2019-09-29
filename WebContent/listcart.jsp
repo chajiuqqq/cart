@@ -28,6 +28,7 @@
 		<td>单价</td>
 		<td>数量</td>
 		<td>小计</td>
+		<td>操作</td>
 	</tr>
 	<c:forEach items="${orderitemlist}" var="orderitem" varStatus="st">
 		<tr>
@@ -35,18 +36,18 @@
 			<td>${orderitem.product.price}</td>
 			<td>${orderitem.number}</td>
 			<td>${orderitem.totalPrice}</td>
+			<td><a href="delOrderItem?pid=${orderitem.product.id}" target="_self">删除</a></td>
 		</tr>
 	
 	</c:forEach>
 	<tr>
-		<td colspan="4" style="color:blue;text-align:right">总计:${totalMoney}</td>
+		<td colspan="5" style="color:blue;text-align:right">总计:${totalMoney}</td>
 	</tr>
 	<tr>
-		<td colspan="4"><a href="pushorder"><input type="button" value="提交订单"></a></td>
+		<td colspan="5"><a href="pushorder"><input type="button" value="提交订单"></a></td>
 	</tr>
 
 </table>
 </div>
-
 </body>
 </html>
