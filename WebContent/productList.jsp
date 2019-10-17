@@ -20,7 +20,7 @@
 		color:skyblue;
 	}
 	tr:nth-child(2n-1){
-		background-color:#4169E1;
+		background-color:skyblue;
 	}
 </style>
 </head>
@@ -117,6 +117,8 @@
 				});
 			};
 	}*/
+	
+	//rewrite with jQuery
 	$(function(){
 		$(".btn").click(function(){
 			var pid=$(this).attr("pid");
@@ -126,6 +128,7 @@
 			$.get(
 				"addintocart?pid="+pid+"&selectnumber="+num
 			);
+			alert("已加入购物车!");
 		});
 	})
 

@@ -15,33 +15,41 @@ import entity.User;
 import util.DateUtil;
 
 public class PushOrderServlet extends HttpServlet {
+	Random rand=new Random();
+	int oid=Math.abs(rand.nextInt());
+	
+	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//新建订单
-		Random rand=new Random();
-		OrderDAO orderDAO=new OrderDAO();
 		
-		int oid=Math.abs(rand.nextInt());
 		User parentuser=(User)request.getSession().getAttribute("parentuser");
 		if(parentuser==null){
 			response.sendRedirect("login.jsp");
 		}
-
-		System.out.println("oid:"+oid);
 		
+		archiveOrder(parentuser);
 		
-		orderDAO.add(new Order(oid,parentuser, DateUtil.getDate()));
+		List<OrderItem> orderItemlist=(List<OrderItem>)request.getSession().getAttribute("orderitemlist");
 		
+		archiveOrderItem(orderItemlist);
+		
+		response.setContentType("text/html;charset=utf-8"); 
+		response.getWriter().println("提交成功！");
+		
+	}
+	private void archiveOrderItem(List<OrderItem> list) {
 		OrderItemDAO orderItemDAO=new OrderItemDAO();
-		List<OrderItem> list=(List<OrderItem>)request.getSession().getAttribute("orderitemlist");
 		for(OrderItem item:list){
 			item.setOid(oid);
 			orderItemDAO.add(item);
 			System.out.println(item);
 		}
-		list.clear();
-		response.setContentType("text/html;charset=utf-8"); 
-		response.getWriter().println("提交成功！");
-		
+//		list.clear();
+	}
+	private void archiveOrder(User parentuser) {
+
+		OrderDAO orderDAO=new OrderDAO();
+		orderDAO.add(new Order(oid,parentuser, DateUtil.getDate()));	
 	}
 }

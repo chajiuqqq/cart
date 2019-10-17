@@ -44,7 +44,10 @@
 		<td colspan="5" style="color:blue;text-align:right">总计:${totalMoney}</td>
 	</tr>
 	<tr>
-		<td colspan="5"><a href="pushorder"><input type="button" value="提交订单"></a></td>
+		<td colspan="5">
+			<a href="pushorder"><input type="button" value="提交订单"></a>
+			<input type="button"  id="backbtn" onclick="location.assign('listProduct')" value="返回购物车">
+		</td>
 	</tr>
 
 </table>
