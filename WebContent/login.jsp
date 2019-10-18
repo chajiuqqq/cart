@@ -25,7 +25,7 @@
 			var res=JSON.parse(xmlhttp.responseText);
 			if(res!=null&&res.status=="true"){
 				alert("登入成功！");
-				window.open("listProduct")
+				location.assign("listProduct");
 			}else{
 				alert("登入失败！");
 			}

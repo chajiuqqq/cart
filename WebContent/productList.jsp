@@ -16,7 +16,7 @@
 		border:black solid 1px;
 	}
 	.userstatus{
-		float:right;
+		float:left;
 		color:skyblue;
 	}
 	tr:nth-child(2n-1){
@@ -31,13 +31,15 @@
 
 <c:if test="${!(empty parentuser)}">
 	<div class="userstatus">
-		<p>已登录 当前用户:${parentuser.name}</p>
+		<p>已登录 当前用户:${parentuser.name}</p><br/>
+		<a href="myorders">我的订单</a>
+		<a href="checkout.jsp">退出</a>
 	</div>
 </c:if>
 
 <c:if test="${empty parentuser}">
 	<div class="userstatus">
-		<a href="login.jsp" target="_blank">登陆</a>
+		<a href="login.jsp" target="_self">登陆</a>
 	</div>
 </c:if>
 
@@ -131,6 +133,8 @@
 			alert("已加入购物车!");
 		});
 	})
+	
+	
 
 </script>
 

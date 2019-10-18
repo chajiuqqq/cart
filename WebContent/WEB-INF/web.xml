@@ -11,6 +11,11 @@
 		<url-pattern>/listProduct</url-pattern>
 	</servlet-mapping>
 	
+	<servlet-mapping>
+		<servlet-name>ProductListServlet</servlet-name>
+		<url-pattern>/shopping</url-pattern>
+	</servlet-mapping>
+	
 	
 	<servlet>
 		<servlet-name>AddIntoCartServlet</servlet-name>
@@ -40,4 +45,16 @@
 		<servlet-name>DelOrderItemServlet</servlet-name>
 		<url-pattern>/delOrderItem</url-pattern>
 	</servlet-mapping>
+	
+	
+	
+	<servlet>
+		<servlet-name>MyOrderServlet</servlet-name>
+		<servlet-class>MyOrderServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MyOrderServlet</servlet-name>
+		<url-pattern>/myorders</url-pattern>
+	</servlet-mapping>
+	
 </web-app>

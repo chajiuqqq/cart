@@ -26,6 +26,7 @@ public class PushOrderServlet extends HttpServlet {
 		User parentuser=(User)request.getSession().getAttribute("parentuser");
 		if(parentuser==null){
 			response.sendRedirect("login.jsp");
+			return;
 		}
 		
 		archiveOrder(parentuser);
@@ -33,9 +34,9 @@ public class PushOrderServlet extends HttpServlet {
 		List<OrderItem> orderItemlist=(List<OrderItem>)request.getSession().getAttribute("orderitemlist");
 		
 		archiveOrderItem(orderItemlist);
-		
-		response.setContentType("text/html;charset=utf-8"); 
-		response.getWriter().println("提交成功！");
+		orderItemlist.clear();
+		request.getSession().setAttribute("totalMoney", 0);
+		response.sendRedirect("myorders");
 		
 	}
 	private void archiveOrderItem(List<OrderItem> list) {
