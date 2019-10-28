@@ -27,6 +27,8 @@ http://127.0.0.1:8080/cart/register.jsp
 
 ### 3.商品页面
 ![products](https://github.com/chajiuqqq/cart/blob/master/img/listProduct.png)
+#### 路径
+http://127.0.0.1:8080/cart/listProduct
 
 #### 它能够：
 * 显示用户是否已登录，登录了就显示用户昵称
@@ -42,7 +44,8 @@ http://127.0.0.1:8080/cart/register.jsp
 * 显示购物车总金额
 * 提交您的订单
 
-
+#### 路径
+http://127.0.0.1:8080/cart/listcart.jsp
 
 ### 5.用户订单中心页面
 ![myorder](https://github.com/chajiuqqq/cart/blob/master/img/myOrder.png)
@@ -51,6 +54,8 @@ http://127.0.0.1:8080/cart/register.jsp
 * 按订单创建顺序显示订单和商品信息
 ![show_orders](https://github.com/chajiuqqq/cart/blob/master/img/orders_detail.png)
 
+#### 路径
+http://127.0.0.1:8080/cart/myorders
 ## 需要改进的地方
 界面没有美化，开发过程中也没有使用框架，这对后期维护造成了困难。
 
